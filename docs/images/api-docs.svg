@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700">
+  <rect width="1200" height="700" fill="#0f172a"/>
+  <text x="60" y="90" font-family="Arial, sans-serif" font-size="42" fill="#f8fafc" font-weight="700">API Docs Preview</text>
+  <text x="60" y="130" font-family="Arial, sans-serif" font-size="18" fill="#94a3b8">Swagger / OpenAPI</text>
+
+  <rect x="80" y="180" width="1040" height="430" rx="18" fill="#111827" stroke="#334155"/>
+  <rect x="110" y="210" width="320" height="54" rx="8" fill="#1e293b"/>
+  <text x="135" y="246" font-family="Arial, sans-serif" font-size="24" fill="#f8fafc">GET /health</text>
+
+  <rect x="110" y="290" width="420" height="54" rx="8" fill="#1e293b"/>
+  <text x="135" y="326" font-family="Arial, sans-serif" font-size="24" fill="#f8fafc">GET /api/v1/market/overview</text>
+
+  <rect x="110" y="370" width="460" height="54" rx="8" fill="#1e293b"/>
+  <text x="135" y="406" font-family="Arial, sans-serif" font-size="24" fill="#f8fafc">GET /api/v1/market/signals</text>
+
+  <rect x="110" y="450" width="500" height="54" rx="8" fill="#1e293b"/>
+  <text x="135" y="486" font-family="Arial, sans-serif" font-size="24" fill="#f8fafc">GET /api/v1/market/sentiment/AAPL</text>
+
+  <rect x="700" y="220" width="350" height="220" rx="18" fill="#0ea5e9" opacity="0.12" stroke="#38bdf8"/>
+  <text x="780" y="310" font-family="Arial, sans-serif" font-size="30" fill="#f8fafc" font-weight="700">JSON</text>
+  <text x="760" y="355" font-family="Arial, sans-serif" font-size="18" fill="#cbd5e1">status: healthy</text>
+  <text x="760" y="390" font-family="Arial, sans-serif" font-size="18" fill="#cbd5e1">service: market-api</text>
+  <text x="760" y="425" font-family="Arial, sans-serif" font-size="18" fill="#cbd5e1">version: 0.1.0</text>
+</svg>
