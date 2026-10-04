@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700">
+  <rect width="1200" height="700" fill="#0f172a"/>
+  <text x="60" y="90" font-family="Arial, sans-serif" font-size="42" fill="#f8fafc" font-weight="700">System Architecture</text>
+  <text x="60" y="130" font-family="Arial, sans-serif" font-size="18" fill="#94a3b8">Financial Market Prediction</text>
+
+  <rect x="80" y="200" width="180" height="110" rx="20" fill="#1e293b" stroke="#334155"/>
+  <text x="120" y="245" font-family="Arial, sans-serif" font-size="24" fill="#f8fafc" font-weight="700">Market</text>
+  <text x="120" y="278" font-family="Arial, sans-serif" font-size="24" fill="#f8fafc" font-weight="700">Data</text>
+
+  <rect x="330" y="170" width="200" height="150" rx="20" fill="#1e293b" stroke="#334155"/>
+  <text x="368" y="232" font-family="Arial, sans-serif" font-size="22" fill="#f8fafc">PostgreSQL</text>
+  <text x="388" y="270" font-family="Arial, sans-serif" font-size="22" fill="#f8fafc">MongoDB</text>
+  <text x="368" y="308" font-family="Arial, sans-serif" font-size="22" fill="#f8fafc">Elasticsearch</text>
+
+  <rect x="620" y="200" width="180" height="110" rx="20" fill="#1e293b" stroke="#334155"/>
+  <text x="655" y="248" font-family="Arial, sans-serif" font-size="22" fill="#f8fafc">Feature</text>
+  <text x="646" y="282" font-family="Arial, sans-serif" font-size="22" fill="#f8fafc">Engineering</text>
+
+  <rect x="870" y="200" width="220" height="110" rx="20" fill="#1e293b" stroke="#334155"/>
+  <text x="905" y="247" font-family="Arial, sans-serif" font-size="22" fill="#f8fafc">ML Forecasting</text>
+  <text x="892" y="282" font-family="Arial, sans-serif" font-size="22" fill="#f8fafc">Sentiment AI</text>
+
+  <rect x="500" y="430" width="250" height="120" rx="22" fill="#0ea5e9" stroke="#38bdf8"/>
+  <text x="548" y="485" font-family="Arial, sans-serif" font-size="28" fill="#e0f2fe" font-weight="700">FastAPI</text>
+  <text x="525" y="520" font-family="Arial, sans-serif" font-size="22" fill="#e0f2fe">Backend</text>
+
+  <path d="M260 255 L330 255" stroke="#38bdf8" stroke-width="4" fill="none"/>
+  <path d="M530 255 L620 255" stroke="#38bdf8" stroke-width="4" fill="none"/>
+  <path d="M800 255 L870 255" stroke="#38bdf8" stroke-width="4" fill="none"/>
+  <path d="M710 310 L710 430" stroke="#38bdf8" stroke-width="4" fill="none"/>
+  <path d="M710 430 L750 430" stroke="#38bdf8" stroke-width="4" fill="none"/>
+</svg>
