@@ -1,7 +1,34 @@
-fastapi==0.111.0
-uvicorn==0.30.1
-pydantic==2.8.2
-httpx==0.27.0
-pytest==8.2.2
-pytest-asyncio==0.24.0
-python-dotenv==1.0.1
+# Data Layer
+
+This module defines the storage and ingestion strategy for the financial market analytics platform.
+
+## Components
+
+- PostgreSQL for structured market and prediction data
+- Elasticsearch for news and searchable text content
+- MongoDB for raw and semi-structured documents
+
+## Example usage
+
+```python
+from app.data.ingestion import get_ingestion_service
+
+service = get_ingestion_service()
+service.seed_sample_assets()
+
+service.ingest_price_snapshot("AAPL", {
+    "ts": "2026-10-04T15:30:00Z",
+    "open": 214.2,
+    "high": 217.5,
+    "low": 213.8,
+    "close": 216.9,
+    "volume": 4500000,
+    "source": "sample_feed",
+})
+```
+
+## Notes
+
+- PostgreSQL stores normalized, structured market data and predictions.
+- Elasticsearch indexes news and sentiment documents for queries.
+- MongoDB stores raw payloads and unstructured data for pipelines and debugging.

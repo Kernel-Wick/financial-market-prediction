@@ -1,0 +1,16 @@
+{
+  "mappings": {
+    "properties": {
+      "asset_symbol": { "type": "keyword" },
+      "title": { "type": "text" },
+      "content": { "type": "text" },
+      "source": { "type": "keyword" },
+      "published_at": { "type": "date" },
+      "sentiment_score": { "type": "float" },
+      "sentiment_label": { "type": "keyword" },
+      "url": { "type": "keyword" },
+      "language": { "type": "keyword" },
+      "tags": { "type": "keyword" }
+    }
+  }
+}

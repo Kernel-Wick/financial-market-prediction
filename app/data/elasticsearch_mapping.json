@@ -1,0 +1,88 @@
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+
+-- Assets table
+CREATE TABLE IF NOT EXISTS assets (
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    symbol VARCHAR(20) UNIQUE NOT NULL,
+    name VARCHAR(200) NOT NULL,
+    asset_type VARCHAR(50) NOT NULL DEFAULT 'stock',
+    exchange VARCHAR(100),
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+);
+
+-- Historical price data
+CREATE TABLE IF NOT EXISTS market_prices (
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    asset_id UUID NOT NULL REFERENCES assets(id),
+    ts TIMESTAMP WITH TIME ZONE NOT NULL,
+    open_price NUMERIC(18, 6) NOT NULL,
+    high_price NUMERIC(18, 6) NOT NULL,
+    low_price NUMERIC(18, 6) NOT NULL,
+    close_price NUMERIC(18, 6) NOT NULL,
+    volume BIGINT NOT NULL DEFAULT 0,
+    source VARCHAR(100) NOT NULL DEFAULT 'market_feed',
+    UNIQUE(asset_id, ts)
+);
+
+CREATE INDEX IF NOT EXISTS idx_market_prices_asset_ts
+ON market_prices(asset_id, ts DESC);
+
+-- News articles
+CREATE TABLE IF NOT EXISTS news_articles (
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    asset_id UUID REFERENCES assets(id),
+    source VARCHAR(200) NOT NULL,
+    title TEXT NOT NULL,
+    url TEXT,
+    content TEXT,
+    published_at TIMESTAMP WITH TIME ZONE,
+    sentiment_score NUMERIC(5, 4),
+    sentiment_label VARCHAR(20),
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+);
+
+CREATE INDEX IF NOT EXISTS idx_news_articles_asset_time
+ON news_articles(asset_id, published_at DESC);
+
+-- Social sentiment signals
+CREATE TABLE IF NOT EXISTS social_signals (
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    asset_id UUID REFERENCES assets(id),
+    source VARCHAR(100) NOT NULL,
+    text_content TEXT,
+    sentiment_score NUMERIC(5, 4),
+    sentiment_label VARCHAR(20),
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+);
+
+CREATE INDEX IF NOT EXISTS idx_social_signals_asset_time
+ON social_signals(asset_id, created_at DESC);
+
+-- Model predictions
+CREATE TABLE IF NOT EXISTS model_predictions (
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    asset_id UUID NOT NULL REFERENCES assets(id),
+    model_name VARCHAR(100) NOT NULL,
+    model_version VARCHAR(50) NOT NULL,
+    prediction_horizon_days INTEGER NOT NULL,
+    predicted_price NUMERIC(18, 6) NOT NULL,
+    lower_bound NUMERIC(18, 6),
+    upper_bound NUMERIC(18, 6),
+    confidence NUMERIC(5, 4),
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+);
+
+CREATE INDEX IF NOT EXISTS idx_predictions_asset_time
+ON model_predictions(asset_id, created_at DESC);
+
+-- Daily summary for analytics
+CREATE TABLE IF NOT EXISTS market_summary (
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    asset_id UUID REFERENCES assets(id),
+    summary_date DATE NOT NULL,
+    sentiment_score NUMERIC(5, 4),
+    avg_volume BIGINT,
+    price_change_pct NUMERIC(10, 4),
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
+    UNIQUE(summary_date, asset_id)
+);
